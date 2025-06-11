@@ -8,7 +8,10 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.prebuilt import create_react_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langfuse.callback import CallbackHandler
+import logging
 
+logger = logging.getLogger("schedule_agent")
+logging.basicConfig(level=logging.INFO)
 from utils.config import settings
 
 # 환경 변수 로드
@@ -22,14 +25,27 @@ _agent_instance = None
 
 langfuse_handler = CallbackHandler(public_key="", secret_key="", host="")
 
-# MCP 서버 URL 설정
+# MCP 서버 URL 설정 - 일정관리용
 MCP_SERVERS = {
-    "github": {
+    "schedule_manager": {
         "url": os.environ.get(
-            "REFRIGERATOR_MCP_URL", "http://localhost:10005/sse"
+            "SCHEDULE_MCP_URL", "http://localhost:10002/sse"
         ),
         "transport": "sse",
-    }
+    },
+    "calendar": {
+        "url": os.environ.get(
+            "CALENDAR_MCP_URL", "http://localhost:10003/sse"
+        ),
+        "transport": "sse",
+    },
+    # 추후 일정관리에 필요한 추가 MCP 서버들
+    # "reminder": {
+    #     "url": os.environ.get(
+    #         "REMINDER_MCP_URL", "http://localhost:10004/sse"
+    #     ),
+    #     "transport": "sse",
+    # },
 }
 
 
@@ -152,13 +168,13 @@ async def generate_prompt() -> str:
     return prompt
 
 
-# 리포트 에이전트 생성 함수
-async def get_report_agent():
-    """리포트 에이전트를 생성하고 반환합니다."""
+# 일정관리 에이전트 생성 함수
+async def get_schedule_agent():
+    """일정관리 에이전트를 생성하고 반환합니다."""
     global _agent_instance
     if _agent_instance is None:
         prompt = await generate_prompt()
-        print("프롬프트 생성 완료")
+        logger.info("프롬프트 생성 완료")
         system_prompt = ChatPromptTemplate.from_messages(
             [("system", prompt), MessagesPlaceholder(variable_name="messages")]
         )
@@ -167,27 +183,27 @@ async def get_report_agent():
         
         # Handoff tool 추가를 위해 도구 리스트 확장
         try:
-            from utils.handoff_tools import transfer_to_general, transfer_to_research, ask_general_for_help, ask_research_for_help
-            handoff_tools = [transfer_to_general, transfer_to_research, ask_general_for_help, ask_research_for_help]
+            from utils.handoff_tools import transfer_to_general, transfer_to_memo, transfer_to_health, ask_general_for_help, ask_memo_for_help, ask_health_for_help
+            handoff_tools = [transfer_to_general, transfer_to_memo, transfer_to_health, ask_general_for_help, ask_memo_for_help, ask_health_for_help]
             all_tools = tools + handoff_tools
-            print(f"Handoff tools added to Report Agent: {len(handoff_tools)} tools")
+            logger.info(f"Handoff tools added to Schedule Agent: {len(handoff_tools)} tools")
         except ImportError:
-            print("Handoff tools not available, using only MCP tools")
+            logger.warning("Handoff tools not available, using only MCP tools")
             all_tools = tools
         
         _agent_instance = create_react_agent(
             llm, all_tools, prompt=system_prompt, debug=True  # 디버그 모드 활성화
         )
-        print("리포트 에이전트 생성 완료")
+        logger.info("일정관리 에이전트 생성 완료")
     return _agent_instance
 
 
-# 리포트 생성 함수
-async def generate_report(user_query: str) -> str:
-    """사용자 쿼리를 받아 리포트를 생성합니다."""
+# 일정 생성 함수
+async def create_schedule(user_query: str) -> str:
+    """사용자 요청을 받아 일정을 생성합니다."""
     try:
-        print(f"리포트 생성 시작: {user_query}")
-        agent = await get_report_agent()
+        logger.info(f"일정 생성 시작: {user_query}")
+        agent = await get_schedule_agent()
         
         # 에이전트 실행
         result = await agent.ainvoke(
@@ -203,76 +219,74 @@ async def generate_report(user_query: str) -> str:
             else:
                 return str(final_message)
         else:
-            return "리포트 생성 중 오류가 발생했습니다."
+            return "일정 생성 중 오류가 발생했습니다."
             
     except Exception as e:
-        print(f"리포트 생성 중 오류 발생: {str(e)}")
-        return f"리포트 생성 중 오류가 발생했습니다: {str(e)}"
+        logger.error(f"일정 생성 중 오류 발생: {str(e)}")
+        return f"일정 생성 중 오류가 발생했습니다: {str(e)}"
 
 
-# 장애 분석 리포트 생성 함수
-async def analyze_incident(incident_description: str, time_range: str = "1h") -> str:
-    """장애 상황을 분석하고 상세한 리포트를 생성합니다."""
-    analysis_query = f"""
-    다음 장애 상황을 분석해주세요:
+# 일정 관리 함수
+async def manage_schedule(schedule_description: str, action_type: str = "create") -> str:
+    """일정을 관리합니다 (생성, 수정, 삭제, 조회)."""
+    management_query = f"""
+    다음 일정 관리 요청을 처리해주세요:
     
-    장애 설명: {incident_description}
-    분석 시간 범위: {time_range}
+    일정 내용: {schedule_description}
+    작업 유형: {action_type}
     
-    다음 단계로 분석을 진행해주세요:
-    1. 관련 메트릭 데이터 수집 및 분석
-    2. 로그 패턴 분석
-    3. 트레이스 데이터 확인
-    4. 최근 배포 및 변경사항 확인
-    5. 근본 원인 분석
-    6. 해결 방안 및 예방 전략 제시
+    작업 유형별 처리 방법:
+    - create: 새로운 일정 생성
+    - update: 기존 일정 수정
+    - delete: 일정 삭제
+    - view: 일정 조회
     
-    증거 기반의 상세한 분석 리포트를 작성해주세요.
+    적절한 도구를 사용하여 요청을 처리하고 결과를 알려주세요.
     """
     
-    return await generate_report(analysis_query)
+    return await create_schedule(management_query)
 
 
-# 성능 분석 리포트 생성 함수
-async def analyze_performance(service_name: str, metric_type: str = "response_time") -> str:
-    """특정 서비스의 성능을 분석하고 리포트를 생성합니다."""
-    performance_query = f"""
-    다음 서비스의 성능을 분석해주세요:
+# 알림 설정 함수
+async def set_reminder(event_description: str, reminder_time: str) -> str:
+    """특정 이벤트에 대한 알림을 설정합니다."""
+    reminder_query = f"""
+    다음 이벤트에 대한 알림을 설정해주세요:
     
-    서비스명: {service_name}
-    분석 메트릭: {metric_type}
+    이벤트: {event_description}
+    알림 시간: {reminder_time}
     
-    다음 항목들을 포함하여 분석해주세요:
-    1. 현재 성능 지표 현황
-    2. 과거 대비 성능 변화 추이
-    3. 성능 병목 지점 식별
-    4. 리소스 사용량 분석
-    5. 성능 개선 방안 제시
+    다음 항목들을 포함하여 처리해주세요:
+    1. 이벤트 일정 확인
+    2. 알림 시간 설정
+    3. 알림 방식 설정
+    4. 반복 알림 여부 확인
     
-    데이터 기반의 상세한 성능 분석 리포트를 작성해주세요.
+    알림이 성공적으로 설정되었는지 확인해주세요.
     """
     
-    return await generate_report(performance_query)
+    return await create_schedule(reminder_query)
 
 
-# 시스템 상태 리포트 생성 함수
-async def generate_system_health_report() -> str:
-    """전체 시스템의 상태를 점검하고 리포트를 생성합니다."""
-    health_query = """
-    전체 시스템의 상태를 점검하고 종합적인 헬스 리포트를 작성해주세요.
+# 일정 요약 리포트 생성 함수
+async def generate_schedule_summary(time_period: str = "week") -> str:
+    """특정 기간의 일정을 요약한 리포트를 생성합니다."""
+    summary_query = f"""
+    다음 기간의 일정을 요약해주세요:
+    
+    기간: {time_period}
     
     다음 항목들을 포함해주세요:
-    1. 주요 서비스별 상태 점검
-    2. 인프라 리소스 사용량 현황
-    3. 최근 발생한 이슈 및 알림 분석
-    4. 성능 지표 트렌드 분석
-    5. 잠재적 위험 요소 식별
-    6. 권장 조치사항
+    1. 예정된 일정 목록
+    2. 중요한 이벤트 하이라이트
+    3. 시간 충돌 여부 확인
+    4. 여유 시간 분석
+    5. 일정 관리 제안사항
     
-    현재 시스템의 전반적인 건강 상태와 개선이 필요한 영역을 명확히 제시해주세요.
+    효율적인 시간 관리를 위한 인사이트를 제공해주세요.
     """
     
-    return await generate_report(health_query)
+    return await create_schedule(summary_query)
 
 
 # 에이전트 정리 함수
@@ -287,4 +301,4 @@ async def cleanup_agent():
     if _mcp_client:
         await close_mcp_client()
     
-    print("리포트 에이전트 리소스 정리 완료")
+    logger.info("일정관리 에이전트 리소스 정리 완료")

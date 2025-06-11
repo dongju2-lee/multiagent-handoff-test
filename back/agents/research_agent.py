@@ -8,7 +8,10 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.prebuilt import create_react_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langfuse.callback import CallbackHandler
+import logging
 
+logger = logging.getLogger("memo_agent")
+logging.basicConfig(level=logging.INFO)
 from utils.config import settings
 
 # 환경 변수 로드
@@ -21,14 +24,27 @@ _mcp_tools_cache = None
 
 langfuse_handler = CallbackHandler(public_key="", secret_key="", host="")
 
-# MCP 서버 URL 설정
+# MCP 서버 URL 설정 - 메모관리용
 MCP_SERVERS = {
-        "github": {
+    "memo_manager": {
         "url": os.environ.get(
-            "REFRIGERATOR_MCP_URL", "http://localhost:10005/sse"
+            "MEMO_MCP_URL", "http://localhost:10005/sse"
         ),
         "transport": "sse",
-    }
+    },
+    "note_storage": {
+        "url": os.environ.get(
+            "NOTE_STORAGE_MCP_URL", "http://localhost:10006/sse"
+        ),
+        "transport": "sse",
+    },
+    # 추후 메모관리에 필요한 추가 MCP 서버들
+    # "todo_manager": {
+    #     "url": os.environ.get(
+    #         "TODO_MCP_URL", "http://localhost:10007/sse"
+    #     ),
+    #     "transport": "sse",
+    # },
 }
 
 
@@ -151,12 +167,12 @@ async def generate_prompt() -> str:
     return prompt
 
 
-# 계획 생성 함수
-async def get_research_agent() -> str:
-    """사용자 요청에 대한 계획을 생성합니다."""
+# 메모관리 에이전트 생성 함수
+async def get_memo_agent() -> str:
+    """메모관리 에이전트를 생성하고 반환합니다."""
     global _agent_instance
     prompt = await generate_prompt()
-    print("프롬프트 생성 완료")
+    logger.info("프롬프트 생성 완료")
     system_prompt = ChatPromptTemplate.from_messages(
         [("system", prompt), MessagesPlaceholder(variable_name="messages")]
     )
@@ -165,16 +181,16 @@ async def get_research_agent() -> str:
     
     # Handoff tool 추가를 위해 도구 리스트 확장
     try:
-        from utils.handoff_tools import transfer_to_general, transfer_to_report, ask_general_for_help, ask_report_for_help
-        handoff_tools = [transfer_to_general, transfer_to_report, ask_general_for_help, ask_report_for_help]
+        from utils.handoff_tools import transfer_to_general, transfer_to_schedule, transfer_to_health, ask_general_for_help, ask_schedule_for_help, ask_health_for_help
+        handoff_tools = [transfer_to_general, transfer_to_schedule, transfer_to_health, ask_general_for_help, ask_schedule_for_help, ask_health_for_help]
         all_tools = tools + handoff_tools
-        print(f"Handoff tools added to Research Agent: {len(handoff_tools)} tools")
+        logger.info(f"Handoff tools added to Memo Agent: {len(handoff_tools)} tools")
     except ImportError:
-        print("Handoff tools not available, using only MCP tools")
+        logger.warning("Handoff tools not available, using only MCP tools")
         all_tools = tools
     
     _agent_instance = create_react_agent(
         llm, all_tools, prompt=system_prompt, debug=True  # 디버그 모드 활성화
     )
-    print("에이전트 생성 완료")
+    logger.info("메모관리 에이전트 생성 완료")
     return _agent_instance

@@ -10,7 +10,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langfuse.callback import CallbackHandler
 import logging
 
-logger = logging.getLogger("general_agent")
+logger = logging.getLogger("health_agent")
 logging.basicConfig(level=logging.INFO)
 from utils.config import settings
 
@@ -24,18 +24,24 @@ _mcp_tools_cache = None
 
 langfuse_handler = CallbackHandler(public_key="", secret_key="", host="")
 
-# MCP 서버 URL 설정
+# MCP 서버 URL 설정 - 건강관리용
 MCP_SERVERS = {
-    "general_consulting": {
+    "health_tracker": {
         "url": os.environ.get(
-            "GENERAL_CONSULTING_MCP_URL", "http://localhost:10001/sse"
+            "HEALTH_MCP_URL", "http://localhost:10008/sse"
         ),
         "transport": "sse",
     },
-    # 추후 일반상담에 필요한 추가 MCP 서버들
-    # "calendar": {
+    "fitness_manager": {
+        "url": os.environ.get(
+            "FITNESS_MCP_URL", "http://localhost:10009/sse"
+        ),
+        "transport": "sse",
+    },
+    # 추후 건강관리에 필요한 추가 MCP 서버들
+    # "nutrition_tracker": {
     #     "url": os.environ.get(
-    #         "CALENDAR_MCP_URL", "http://localhost:10002/sse"
+    #         "NUTRITION_MCP_URL", "http://localhost:10010/sse"
     #     ),
     #     "transport": "sse",
     # },
@@ -122,7 +128,7 @@ async def get_llm():
     global _llm_instance
     if _llm_instance is None:
         model_name = os.environ.get("VERTEX_MODEL", "gemini-2.0-flash")
-        print(f"LLM 모델 초기화: {model_name}")
+        logger.info(f"LLM 모델 초기화: {model_name}")
         _llm_instance = ChatVertexAI(
             model=model_name, temperature=0.1, max_output_tokens=8190
         )
@@ -143,11 +149,11 @@ async def generate_prompt() -> str:
                 "현재 사용 가능한 도구가 없습니다. MCP 서버 연결을 확인하세요."
             )
     except Exception as e:
-        print(f"도구 정보 가져오기 중 오류 발생: {str(e)}")
+        logger.error(f"도구 정보 가져오기 중 오류 발생: {str(e)}")
         tools_text = "도구 정보를 가져오는 중 오류가 발생했습니다. MCP 서버 연결을 확인하세요."
     
     prompt_path = os.path.join(
-        os.path.dirname(__file__), "../prompts/general_agent.txt"
+        os.path.dirname(__file__), "../prompts/health_agent.txt"
     )
     async with aiofiles.open(prompt_path, mode="r", encoding="utf-8") as f:
         prompt_template = await f.read()
@@ -158,12 +164,12 @@ async def generate_prompt() -> str:
     return prompt
 
 
-# 계획 생성 함수
-async def get_general_agent() -> str:
-    """사용자 요청에 대한 계획을 생성합니다."""
+# 건강관리 에이전트 생성 함수
+async def get_health_agent() -> str:
+    """건강관리 에이전트를 생성하고 반환합니다."""
     global _agent_instance
     prompt = await generate_prompt()
-    logger.info(f"프롬프트 생성 완료: {prompt}")
+    logger.info("프롬프트 생성 완료")
     system_prompt = ChatPromptTemplate.from_messages(
         [("system", prompt), MessagesPlaceholder(variable_name="messages")]
     )
@@ -172,10 +178,10 @@ async def get_general_agent() -> str:
     
     # Handoff tool 추가를 위해 도구 리스트 확장
     try:
-        from utils.handoff_tools import transfer_to_memo, transfer_to_schedule, transfer_to_health, ask_memo_for_help, ask_schedule_for_help, ask_health_for_help
-        handoff_tools = [transfer_to_memo, transfer_to_schedule, transfer_to_health, ask_memo_for_help, ask_schedule_for_help, ask_health_for_help]
+        from utils.handoff_tools import transfer_to_general, transfer_to_schedule, transfer_to_memo, ask_general_for_help, ask_schedule_for_help, ask_memo_for_help
+        handoff_tools = [transfer_to_general, transfer_to_schedule, transfer_to_memo, ask_general_for_help, ask_schedule_for_help, ask_memo_for_help]
         all_tools = tools + handoff_tools
-        logger.info(f"Handoff tools added to General Consulting Agent: {len(handoff_tools)} tools")
+        logger.info(f"Handoff tools added to Health Agent: {len(handoff_tools)} tools")
     except ImportError:
         logger.warning("Handoff tools not available, using only MCP tools")
         all_tools = tools
@@ -183,5 +189,115 @@ async def get_general_agent() -> str:
     _agent_instance = create_react_agent(
         llm, all_tools, prompt=system_prompt, debug=True  # 디버그 모드 활성화
     )
-    logger.info("에이전트 생성 완료")
+    logger.info("건강관리 에이전트 생성 완료")
     return _agent_instance
+
+
+# 건강 기록 관리 함수
+async def track_health_data(user_query: str) -> str:
+    """사용자 요청을 받아 건강 데이터를 기록하고 관리합니다."""
+    try:
+        logger.info(f"건강 데이터 추적 시작: {user_query}")
+        agent = await get_health_agent()
+        
+        # 에이전트 실행
+        result = await agent.ainvoke(
+            {"messages": [("user", user_query)]},
+            config={"callbacks": [langfuse_handler]}
+        )
+        
+        # 결과에서 최종 답변 추출
+        if "messages" in result and result["messages"]:
+            final_message = result["messages"][-1]
+            if hasattr(final_message, "content"):
+                return final_message.content
+            else:
+                return str(final_message)
+        else:
+            return "건강 데이터 처리 중 오류가 발생했습니다."
+            
+    except Exception as e:
+        logger.error(f"건강 데이터 추적 중 오류 발생: {str(e)}")
+        return f"건강 데이터 처리 중 오류가 발생했습니다: {str(e)}"
+
+
+# 운동 계획 생성 함수
+async def create_workout_plan(fitness_goal: str, current_level: str = "beginner") -> str:
+    """운동 목표와 현재 수준에 맞는 운동 계획을 생성합니다."""
+    workout_query = f"""
+    다음 정보를 바탕으로 개인 맞춤 운동 계획을 수립해주세요:
+    
+    운동 목표: {fitness_goal}
+    현재 수준: {current_level}
+    
+    다음 항목들을 포함하여 계획해주세요:
+    1. 주간 운동 스케줄 (빈도, 시간)
+    2. 운동 종류별 세부 프로그램
+    3. 강도 조절 방법
+    4. 진척도 측정 방법
+    5. 안전 수칙 및 주의사항
+    
+    실현 가능하고 효과적인 운동 계획을 제공해주세요.
+    """
+    
+    return await track_health_data(workout_query)
+
+
+# 식단 관리 함수
+async def manage_nutrition(dietary_goal: str, dietary_restrictions: str = "") -> str:
+    """식단 목표와 제한사항에 맞는 영양 관리 계획을 제공합니다."""
+    nutrition_query = f"""
+    다음 정보를 바탕으로 개인 맞춤 식단 관리 계획을 수립해주세요:
+    
+    식단 목표: {dietary_goal}
+    식단 제한사항: {dietary_restrictions}
+    
+    다음 항목들을 포함하여 계획해주세요:
+    1. 일일 권장 칼로리 및 영양소
+    2. 식사별 메뉴 추천
+    3. 간식 및 수분 섭취 가이드
+    4. 영양 균형 유지 방법
+    5. 식단 기록 및 모니터링 방법
+    
+    건강하고 지속 가능한 식단 계획을 제공해주세요.
+    """
+    
+    return await track_health_data(nutrition_query)
+
+
+# 건강 리포트 생성 함수
+async def generate_health_report(time_period: str = "month") -> str:
+    """특정 기간의 건강 데이터를 분석하여 리포트를 생성합니다."""
+    report_query = f"""
+    다음 기간의 건강 데이터를 종합하여 건강 리포트를 작성해주세요:
+    
+    분석 기간: {time_period}
+    
+    다음 항목들을 포함해주세요:
+    1. 운동 목표 달성률 및 진척도
+    2. 체중/체성분 변화 추이
+    3. 식단 관리 현황
+    4. 수면 패턴 분석
+    5. 스트레스 레벨 변화
+    6. 전반적인 건강 상태 평가
+    7. 개선 권장사항
+    
+    데이터 기반의 객관적인 건강 분석과 맞춤형 개선 방안을 제공해주세요.
+    """
+    
+    return await track_health_data(report_query)
+
+
+# 에이전트 정리 함수
+async def cleanup_agent():
+    """에이전트 리소스를 정리합니다."""
+    global _agent_instance, _mcp_client, _mcp_tools_cache, _llm_instance
+    
+    _agent_instance = None
+    _mcp_tools_cache = None
+    _llm_instance = None
+    
+    if _mcp_client:
+        await close_mcp_client()
+    
+    logger.info("건강관리 에이전트 리소스 정리 완료") 

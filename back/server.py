@@ -14,7 +14,7 @@ import logging
 logger = logging.getLogger("server")
 logging.basicConfig(level=logging.INFO)
 
-app = FastAPI(title="Async Cooking Assistant")
+app = FastAPI(title="Personal Assistant API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -44,7 +44,7 @@ async def health_check():
     """서버 상태 확인"""
     return {
         "status": "healthy",
-        "service": "chatbot",
+        "service": "personal_assistant",
         "graph_runner_ready": runner is not None
     }
 
