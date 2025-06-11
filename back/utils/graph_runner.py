@@ -6,7 +6,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from langfuse.callback import CallbackHandler
 from langchain_core.messages import HumanMessage
 
-from graphs.supervisor import build_supervisor_graph
+from graphs.multi_agent import build_multi_agent_graph
 
 logger = logging.getLogger("runner")
 logging.basicConfig(level=logging.INFO)
@@ -15,8 +15,8 @@ memory = MemorySaver()
 
 class GraphRunner:
     def __init__(self) -> None:
-        # handoff 기능이 추가된 기존 supervisor 사용
-        self._graph = build_supervisor_graph().compile(checkpointer=memory)
+        # 새로운 multi-agent swarm 그래프 사용
+        self._graph = build_multi_agent_graph()
         self._lock = asyncio.Lock()
         self.langfuse_handler = CallbackHandler(
             public_key=os.environ.get("LANGFUSE_PUBLIC_KEY"),
@@ -34,11 +34,10 @@ class GraphRunner:
         )
         
         try:
-            # handoff 기능이 포함된 supervisor 그래프 실행
+            # multi-agent swarm 그래프 실행
             state = {
-                "input": user_input,
                 "messages": [HumanMessage(content=user_input)],
-                "agent_mode": agent_mode,
+                "last_active_agent": "general",  # 항상 general로 시작
             }
             
             config = {"configurable": {"thread_id": session_id},"callbacks": [self.langfuse_handler]}
@@ -67,11 +66,10 @@ class GraphRunner:
             logger.info(f"Graph 실행 시작: {thread_id}")
             logger.info(f"Agent 모드: {agent_mode}")
             
-            # handoff 기능이 포함된 supervisor 그래프 사용
+            # multi-agent swarm 그래프 사용
             state = {
-                "input": message,
                 "messages": [HumanMessage(content=message)],
-                "agent_mode": agent_mode,
+                "last_active_agent": "general",  # 항상 general로 시작
             }
             
             config = {"configurable": {"thread_id": thread_id}}

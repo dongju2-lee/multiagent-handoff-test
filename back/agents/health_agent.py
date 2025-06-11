@@ -161,6 +161,12 @@ async def generate_prompt() -> str:
     # 단순 문자열 대체 사용
     prompt = prompt_template.replace("{tools}", tools_text)
     
+    # 템플릿 변수 충돌 방지를 위해 중괄호 이스케이프 처리
+    # MCP 도구 설명에서 나올 수 있는 중괄호를 이중 중괄호로 변경
+    import re
+    # {변수명} 패턴을 {{변수명}}으로 변경 (단, {tools}는 제외)
+    prompt = re.sub(r'\{([^}]+)\}', lambda m: '{{' + m.group(1) + '}}' if m.group(1) != 'tools' else m.group(0), prompt)
+    
     return prompt
 
 

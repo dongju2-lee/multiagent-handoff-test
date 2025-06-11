@@ -22,8 +22,7 @@ def create_handoff_tool(*, agent_name: str, description: str | None = None):
         }
         return Command(
             goto=agent_name,
-            update={"messages": state["messages"] + [tool_message]},
-            graph=Command.PARENT,
+            update={"messages": state["messages"] + [tool_message]}
         )
     return handoff_tool
 
@@ -39,54 +38,66 @@ def create_task_handoff_tool(*, agent_name: str, description: str | None = None)
             "Description of what the next agent should do, including all relevant context.",
         ],
         state: Annotated[MessagesState, InjectedState],
+        tool_call_id: Annotated[str, InjectedToolCallId],
     ) -> Command:
+        # ToolMessage 추가 (tool call에 대한 응답)
+        tool_message = {
+            "role": "tool",
+            "content": f"Task handed off to {agent_name}: {task_description}",
+            "name": name,
+            "tool_call_id": tool_call_id,
+        }
+        
+        # 새로운 작업 메시지
         task_message = {"role": "user", "content": task_description}
-        agent_input = {**state, "messages": [task_message]}
+        
+        # 현재 메시지들 + ToolMessage + 새로운 작업 메시지
+        updated_messages = state["messages"] + [tool_message, task_message]
+        
         return Command(
             goto=agent_name,
-            update=agent_input,
-            graph=Command.PARENT,
+            update={"messages": updated_messages}
         )
     return task_handoff_tool
 
 # 각 에이전트별 handoff tool 생성 - 개인비서 에이전트들
 transfer_to_general = create_handoff_tool(
-    agent_name="general_agent",
+    agent_name="general",
     description="일반상담 에이전트로 전환 - 일상적인 질문과 다양한 도움 요청 처리"
 )
 
 transfer_to_schedule = create_handoff_tool(
-    agent_name="schedule_agent", 
+    agent_name="schedule", 
     description="일정관리 에이전트로 전환 - 스케줄, 약속, 캘린더 관리 전담"
 )
 
 transfer_to_memo = create_handoff_tool(
-    agent_name="memo_agent",
+    agent_name="memo",
     description="메모관리 에이전트로 전환 - 메모 작성, 할일 관리, 정보 저장 전담"
 )
 
 transfer_to_health = create_handoff_tool(
-    agent_name="health_agent",
+    agent_name="health",
     description="건강관리 에이전트로 전환 - 운동, 식단, 건강 관리 전담"
 )
 
 # 작업 기반 handoff tool들 - 개인비서 에이전트들
 ask_general_for_help = create_task_handoff_tool(
-    agent_name="general_agent", 
+    agent_name="general", 
     description="일반상담 에이전트에게 도움 요청 - 일반적인 질문이나 조언이 필요할 때"
 )
 
 ask_schedule_for_help = create_task_handoff_tool(
-    agent_name="schedule_agent",
+    agent_name="schedule",
     description="일정관리 에이전트에게 도움 요청 - 특정 일정 관리나 스케줄링 작업"
 )
 
 ask_memo_for_help = create_task_handoff_tool(
-    agent_name="memo_agent",
+    agent_name="memo",
     description="메모관리 에이전트에게 도움 요청 - 메모 작성이나 할일 관리 작업"
 )
 
 ask_health_for_help = create_task_handoff_tool(
-    agent_name="health_agent",
+    agent_name="health",
     description="건강관리 에이전트에게 도움 요청 - 운동이나 건강 관련 작업"
 ) 

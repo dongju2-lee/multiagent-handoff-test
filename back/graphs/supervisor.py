@@ -36,19 +36,7 @@ async def general_node(state: DevToolState):
     try:
         agent = await get_general_agent()
         result = await agent.ainvoke(state)
-        logger.info(f"일반상담 에이전트 실행 완료 result : {result}")
-        
-        # handoff Command가 있는지 확인
-        if isinstance(result, dict) and "messages" in result:
-            messages = result["messages"]
-            for msg in messages:
-                if hasattr(msg, 'additional_kwargs') and 'tool_calls' in msg.additional_kwargs:
-                    for tool_call in msg.additional_kwargs['tool_calls']:
-                        if tool_call['function']['name'].startswith('transfer_to_'):
-                            target_agent = tool_call['function']['name'].replace('transfer_to_', '')
-                            logger.info(f"Handoff detected: transferring to {target_agent}")
-                            return Command(goto=f"{target_agent}_agent", update=result)
-        
+        logger.info(f"일반상담 에이전트 실행 완료")
         return result
     except Exception as e:
         logger.error(f"일반상담 에이전트 실행 중 오류 발생: {str(e)}")
@@ -76,18 +64,6 @@ async def schedule_node(state: DevToolState):
         logger.info("에이전트 호출 시작...")
         
         result = await agent.ainvoke(state)
-        
-        # handoff Command가 있는지 확인
-        if isinstance(result, dict) and "messages" in result:
-            messages = result["messages"]
-            for msg in messages:
-                if hasattr(msg, 'additional_kwargs') and 'tool_calls' in msg.additional_kwargs:
-                    for tool_call in msg.additional_kwargs['tool_calls']:
-                        if tool_call['function']['name'].startswith('transfer_to_'):
-                            target_agent = tool_call['function']['name'].replace('transfer_to_', '')
-                            logger.info(f"Schedule agent handoff: transferring to {target_agent}")
-                            return Command(goto=f"{target_agent}_agent", update=result)
-        
         logger.info("일정관리 완료. 결과 반환.")
         return result
     except Exception as e:
@@ -120,18 +96,6 @@ async def memo_node(state: DevToolState):
         logger.info("에이전트 호출 시작...")
         
         result = await agent.ainvoke(state)
-        
-        # handoff Command가 있는지 확인
-        if isinstance(result, dict) and "messages" in result:
-            messages = result["messages"]
-            for msg in messages:
-                if hasattr(msg, 'additional_kwargs') and 'tool_calls' in msg.additional_kwargs:
-                    for tool_call in msg.additional_kwargs['tool_calls']:
-                        if tool_call['function']['name'].startswith('transfer_to_'):
-                            target_agent = tool_call['function']['name'].replace('transfer_to_', '')
-                            logger.info(f"Memo agent handoff: transferring to {target_agent}")
-                            return Command(goto=f"{target_agent}_agent", update=result)
-        
         logger.info("메모관리 완료. 결과 반환.")
         return result
     except Exception as e:
@@ -164,18 +128,6 @@ async def health_node(state: DevToolState):
         logger.info("에이전트 호출 시작...")
         
         result = await agent.ainvoke(state)
-        
-        # handoff Command가 있는지 확인
-        if isinstance(result, dict) and "messages" in result:
-            messages = result["messages"]
-            for msg in messages:
-                if hasattr(msg, 'additional_kwargs') and 'tool_calls' in msg.additional_kwargs:
-                    for tool_call in msg.additional_kwargs['tool_calls']:
-                        if tool_call['function']['name'].startswith('transfer_to_'):
-                            target_agent = tool_call['function']['name'].replace('transfer_to_', '')
-                            logger.info(f"Health agent handoff: transferring to {target_agent}")
-                            return Command(goto=f"{target_agent}_agent", update=result)
-        
         logger.info("건강관리 완료. 결과 반환.")
         return result
     except Exception as e:
@@ -197,12 +149,6 @@ def build_supervisor_graph():
         sg.add_node("schedule", schedule_node)
         sg.add_node("memo", memo_node)
         sg.add_node("health", health_node)
-        
-        # handoff를 위한 별칭 노드들도 추가
-        sg.add_node("general_agent", general_node)
-        sg.add_node("schedule_agent", schedule_node)
-        sg.add_node("memo_agent", memo_node)
-        sg.add_node("health_agent", health_node)
 
         sg.add_edge(START, "router")
 
@@ -217,17 +163,10 @@ def build_supervisor_graph():
             },
         )
 
-        # 기존 END 에지들
         sg.add_edge("general", END)
         sg.add_edge("schedule", END)
         sg.add_edge("memo", END)
         sg.add_edge("health", END)
-        
-        # handoff용 별칭 노드들도 END로 연결
-        sg.add_edge("general_agent", END)
-        sg.add_edge("schedule_agent", END)
-        sg.add_edge("memo_agent", END)
-        sg.add_edge("health_agent", END)
         
         logger.info("개인비서 슈퍼바이저 그래프 빌드 완료")
         return sg
