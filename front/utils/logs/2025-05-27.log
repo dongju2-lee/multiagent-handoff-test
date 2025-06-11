@@ -1,0 +1,130 @@
+2025-05-27 19:09:26,481 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/dev_tool_20250525_230953.md
+2025-05-27 19:09:26,482 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:09:45,608 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:09:47,958 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-27 19:09:48,681 - page_list.rag_page - INFO - 컬렉션 확인 결과: 컬렉션 목록: []
+
+2025-05-27 19:09:48,682 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-27 19:09:54,193 - page_list.rag_page - INFO - 임베딩 출력: [VertexAI] 모델 로드 완료: text-multilingual-embedding-002
+2025-05-27 19:09:54,194 - page_list.rag_page - INFO - 임베딩 출력: setup_milvus_collection
+2025-05-27 19:09:54,194 - page_list.rag_page - INFO - 임베딩 출력: 컬렉션 생성 : dev_tool
+2025-05-27 19:09:54,194 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 컬렉션 생성: dev_tool
+2025-05-27 19:09:54,194 - page_list.rag_page - INFO - 임베딩 출력: dense_vector 인덱스 생성
+2025-05-27 19:09:54,194 - page_list.rag_page - INFO - 임베딩 출력: sparse_vector 인덱스 생성
+2025-05-27 19:09:54,195 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 인덱스 생성 및 로드 완료
+2025-05-27 19:09:54,195 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/en 가 없습니다.
+2025-05-27 19:09:54,195 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/ko 가 없습니다.
+2025-05-27 19:09:54,195 - page_list.rag_page - INFO - 임베딩 출력: [Info] 총 0개의 MD파일 발견
+2025-05-27 19:09:54,195 - page_list.rag_page - INFO - 임베딩 출력: [Info] 삽입할 파일이 없습니다.
+2025-05-27 19:09:54,505 - page_list.rag_page - INFO - 마크다운 임베딩 성공: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my-test_20250527_190945.md
+2025-05-27 19:09:54,506 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:09:54,506 - page_list.rag_page - INFO - 메타데이터 업데이트 완료: RAG 생성 정보 추가
+2025-05-27 19:13:54,421 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my-test_20250527_190945.md
+2025-05-27 19:13:54,422 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:14:16,650 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:14:23,444 - page_list.rag_page - INFO - RAG 컬렉션 이름: my-test
+2025-05-27 19:14:23,445 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-27 19:14:24,090 - page_list.rag_page - INFO - 컬렉션 확인 결과: 컬렉션 목록: []
+
+2025-05-27 19:14:24,091 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-27 19:14:28,586 - page_list.rag_page - INFO - 임베딩 출력: [VertexAI] 모델 로드 완료: text-multilingual-embedding-002
+2025-05-27 19:14:28,587 - page_list.rag_page - INFO - 임베딩 출력: setup_milvus_collection
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: 2025-05-27 19:14:28,586 [ERROR][handler]: RPC error: [has_collection], <MilvusException: (code=1100, message=Invalid collection name: my-test. collection name can only contain numbers, letters and underscores: invalid parameter)>, <Time:{'RPC start': '2025-05-27 19:14:28.584747', 'RPC error': '2025-05-27 19:14:28.586724'}> (decorators.py:140)
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: Traceback (most recent call last):
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 256, in <module>
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: main()
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: ~~~~^^
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 239, in main
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: collection = setup_milvus_collection()
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 58, in setup_milvus_collection
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: if utility.has_collection(COLLECTION_NAME):
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/orm/utility.py", line 435, in has_collection
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: return _get_connection(using).has_collection(collection_name, timeout=timeout)
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 141, in handler
+2025-05-27 19:14:28,894 - page_list.rag_page - ERROR - 임베딩 오류: raise e from e
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 137, in handler
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: return func(*args, **kwargs)
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 176, in handler
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: return func(self, *args, **kwargs)
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 116, in handler
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: raise e from e
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 86, in handler
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: return func(*args, **kwargs)
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/client/grpc_handler.py", line 396, in has_collection
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: raise MilvusException(reply.status.code, reply.status.reason, reply.status.error_code)
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 임베딩 오류: pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=Invalid collection name: my-test. collection name can only contain numbers, letters and underscores: invalid parameter)>
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 마크다운 임베딩 실패. 반환 코드: 1
+2025-05-27 19:14:28,895 - page_list.rag_page - ERROR - 오류 메시지: 2025-05-27 19:14:28,586 [ERROR][handler]: RPC error: [has_collection], <MilvusException: (code=1100, message=Invalid collection name: my-test. collection name can only contain numbers, letters and underscores: invalid parameter)>, <Time:{'RPC start': '2025-05-27 19:14:28.584747', 'RPC error': '2025-05-27 19:14:28.586724'}> (decorators.py:140)
+Traceback (most recent call last):
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 256, in <module>
+    main()
+    ~~~~^^
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 239, in main
+    collection = setup_milvus_collection()
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 58, in setup_milvus_collection
+    if utility.has_collection(COLLECTION_NAME):
+       ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/orm/utility.py", line 435, in has_collection
+    return _get_connection(using).has_collection(collection_name, timeout=timeout)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 141, in handler
+    raise e from e
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 137, in handler
+    return func(*args, **kwargs)
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 176, in handler
+    return func(self, *args, **kwargs)
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 116, in handler
+    raise e from e
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/decorators.py", line 86, in handler
+    return func(*args, **kwargs)
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/venv/front/lib/python3.13/site-packages/pymilvus/client/grpc_handler.py", line 396, in has_collection
+    raise MilvusException(reply.status.code, reply.status.reason, reply.status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=1100, message=Invalid collection name: my-test. collection name can only contain numbers, letters and underscores: invalid parameter)>
+
+2025-05-27 19:17:26,439 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my-test_20250527_191416.md
+2025-05-27 19:17:26,440 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:17:35,282 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:17:36,597 - page_list.rag_page - INFO - RAG 컬렉션 이름: my_test
+2025-05-27 19:17:36,598 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-27 19:17:37,305 - page_list.rag_page - INFO - 컬렉션 확인 결과: 컬렉션 목록: []
+
+2025-05-27 19:17:37,305 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-27 19:17:42,604 - page_list.rag_page - INFO - 임베딩 출력: [VertexAI] 모델 로드 완료: text-multilingual-embedding-002
+2025-05-27 19:17:42,604 - page_list.rag_page - INFO - 임베딩 출력: setup_milvus_collection
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: 컬렉션 생성 : my_test
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 컬렉션 생성: my_test
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: dense_vector 인덱스 생성
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: sparse_vector 인덱스 생성
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 인덱스 생성 및 로드 완료
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/en 가 없습니다.
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/ko 가 없습니다.
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: [Info] 총 0개의 MD파일 발견
+2025-05-27 19:17:42,605 - page_list.rag_page - INFO - 임베딩 출력: [Info] 삽입할 파일이 없습니다.
+2025-05-27 19:17:42,924 - page_list.rag_page - INFO - 마크다운 임베딩 성공: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my_test_20250527_191735.md
+2025-05-27 19:17:42,924 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:17:42,924 - page_list.rag_page - INFO - 메타데이터 업데이트 완료: RAG 생성 정보 추가 (컬렉션: my_test)
+2025-05-27 19:20:43,965 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my_test_20250527_191735.md
+2025-05-27 19:20:43,967 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:21:18,455 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:21:32,149 - page_list.rag_page - INFO - RAG 컬렉션 이름: my_test
+2025-05-27 19:21:32,149 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-27 19:21:32,785 - page_list.rag_page - INFO - 컬렉션 확인 결과: 컬렉션 목록: ['my_test']
+
+2025-05-27 19:21:32,785 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-27 19:21:38,287 - page_list.rag_page - INFO - 임베딩 출력: [VertexAI] 모델 로드 완료: text-multilingual-embedding-002
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: setup_milvus_collection
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 기존 컬렉션 삭제: my_test
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: 컬렉션 생성 : my_test
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 컬렉션 생성: my_test
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: dense_vector 인덱스 생성
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: sparse_vector 인덱스 생성
+2025-05-27 19:21:38,288 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 인덱스 생성 및 로드 완료
+2025-05-27 19:21:38,289 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/en 가 없습니다.
+2025-05-27 19:21:38,289 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/ko 가 없습니다.
+2025-05-27 19:21:38,289 - page_list.rag_page - INFO - 임베딩 출력: [Info] 총 0개의 MD파일 발견
+2025-05-27 19:21:38,289 - page_list.rag_page - INFO - 임베딩 출력: [Info] 삽입할 파일이 없습니다.
+2025-05-27 19:21:38,619 - page_list.rag_page - INFO - 마크다운 임베딩 성공: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my_test_20250527_192118.md
+2025-05-27 19:21:38,620 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-27 19:21:38,620 - page_list.rag_page - INFO - 메타데이터 업데이트 완료: RAG 생성 정보 추가 (컬렉션: my_test)

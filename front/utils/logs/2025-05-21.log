@@ -1,0 +1,206 @@
+2025-05-21 19:04:21,362 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕...
+2025-05-21 19:04:21,363 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕...'
+2025-05-21 19:04:21,415 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=6a65d07a-ba24-4e99-aa0b-6c2b24891650, 모드=general
+2025-05-21 19:04:22,936 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:04:22,936 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:04:22,936 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:17:04,100 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕...
+2025-05-21 19:17:04,101 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕...'
+2025-05-21 19:17:04,156 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ae8bff84-0344-477f-878f-ac9e257b018d, 모드=general
+2025-05-21 19:17:06,984 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:17:06,984 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:17:06,985 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:17:20,828 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 지금 무슨 모드로 변경 가능해...
+2025-05-21 19:17:20,828 - page_list.chatbot_page - INFO - 사용자 입력 처리: '지금 무슨 모드로 변경 가능해...'
+2025-05-21 19:17:20,881 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ae8bff84-0344-477f-878f-ac9e257b018d, 모드=general
+2025-05-21 19:17:21,887 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:17:21,888 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:17:21,888 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:17:36,181 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research 모드로 변경해봐...
+2025-05-21 19:17:36,183 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research 모드로 변경해봐...'
+2025-05-21 19:17:36,235 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ae8bff84-0344-477f-878f-ac9e257b018d, 모드=general
+2025-05-21 19:17:37,838 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:17:37,838 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:17:37,838 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:32:09,585 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕...
+2025-05-21 19:32:09,586 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕...'
+2025-05-21 19:32:09,639 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=e74984b1-7bc6-4619-9cb4-8550bca1f984, 모드=general
+2025-05-21 19:32:13,041 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:32:13,042 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:32:13,042 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:32:14,107 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 너는 지금 무슨 모드야?...
+2025-05-21 19:32:14,108 - page_list.chatbot_page - INFO - 사용자 입력 처리: '너는 지금 무슨 모드야?...'
+2025-05-21 19:32:14,161 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=e74984b1-7bc6-4619-9cb4-8550bca1f984, 모드=general
+2025-05-21 19:32:15,900 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:32:15,901 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:32:15,901 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:32:35,685 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research모드로 변경해줄래?...
+2025-05-21 19:32:35,687 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research모드로 변경해줄래?...'
+2025-05-21 19:32:35,745 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=e74984b1-7bc6-4619-9cb4-8550bca1f984, 모드=general
+2025-05-21 19:32:37,508 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:32:37,508 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:32:37,508 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:33:34,914 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 너는 지금 무슨 모드야?
+
+...
+2025-05-21 19:33:34,923 - page_list.chatbot_page - INFO - 사용자 입력 처리: '너는 지금 무슨 모드야?
+
+...'
+2025-05-21 19:33:34,981 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=e74984b1-7bc6-4619-9cb4-8550bca1f984, 모드=general
+2025-05-21 19:33:38,130 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:33:38,130 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:33:38,130 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:33:47,480 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research모드로 변경해줄래?...
+2025-05-21 19:33:47,481 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research모드로 변경해줄래?...'
+2025-05-21 19:33:47,538 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=e74984b1-7bc6-4619-9cb4-8550bca1f984, 모드=general
+2025-05-21 19:33:49,197 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:33:49,198 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:33:49,198 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:58:46,765 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕...
+2025-05-21 19:58:46,766 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕...'
+2025-05-21 19:58:46,821 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=4ce06ed8-8c7e-4a7c-8d69-3e138f7b06a0, 모드=general
+2025-05-21 19:58:51,616 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:58:51,616 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:58:51,616 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 19:59:40,008 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 너는 지금 무슨 모드야...
+2025-05-21 19:59:40,009 - page_list.chatbot_page - INFO - 사용자 입력 처리: '너는 지금 무슨 모드야...'
+2025-05-21 19:59:40,065 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=4ce06ed8-8c7e-4a7c-8d69-3e138f7b06a0, 모드=general
+2025-05-21 19:59:44,209 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 19:59:44,210 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 19:59:44,210 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:00:00,153 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 어떤 모드들이 있어...
+2025-05-21 20:00:00,154 - page_list.chatbot_page - INFO - 사용자 입력 처리: '어떤 모드들이 있어...'
+2025-05-21 20:00:00,207 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=4ce06ed8-8c7e-4a7c-8d69-3e138f7b06a0, 모드=general
+2025-05-21 20:00:01,640 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:00:01,641 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:00:01,641 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:00:27,148 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research모드는?...
+2025-05-21 20:00:27,150 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research모드는?...'
+2025-05-21 20:00:27,207 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=4ce06ed8-8c7e-4a7c-8d69-3e138f7b06a0, 모드=general
+2025-05-21 20:00:28,018 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:00:28,018 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:00:28,018 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:00:31,031 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 있는데...
+2025-05-21 20:00:31,032 - page_list.chatbot_page - INFO - 사용자 입력 처리: '있는데...'
+2025-05-21 20:00:31,097 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=4ce06ed8-8c7e-4a7c-8d69-3e138f7b06a0, 모드=general
+2025-05-21 20:00:32,164 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:00:32,164 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:00:32,164 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:00:59,390 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕.너는 지금 무슨 모드야...
+2025-05-21 20:00:59,390 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕.너는 지금 무슨 모드야...'
+2025-05-21 20:00:59,446 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ff374e0a-495c-4a6c-8d0e-0a58d2f3acd6, 모드=general
+2025-05-21 20:01:02,980 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:01:02,980 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:01:02,980 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:01:12,599 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 모드는 뭐가 있어?...
+2025-05-21 20:01:12,600 - page_list.chatbot_page - INFO - 사용자 입력 처리: '모드는 뭐가 있어?...'
+2025-05-21 20:01:12,654 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ff374e0a-495c-4a6c-8d0e-0a58d2f3acd6, 모드=general
+2025-05-21 20:01:13,939 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:01:13,939 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:01:13,939 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:02:15,698 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 사용가능한 모드 뭐있어...
+2025-05-21 20:02:15,700 - page_list.chatbot_page - INFO - 사용자 입력 처리: '사용가능한 모드 뭐있어...'
+2025-05-21 20:02:15,752 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ff374e0a-495c-4a6c-8d0e-0a58d2f3acd6, 모드=general
+2025-05-21 20:02:19,773 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:02:19,773 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:02:19,773 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:02:27,300 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research모드로 바꿔봐...
+2025-05-21 20:02:27,300 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research모드로 바꿔봐...'
+2025-05-21 20:02:27,355 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=ff374e0a-495c-4a6c-8d0e-0a58d2f3acd6, 모드=general
+2025-05-21 20:02:29,408 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:02:29,409 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:02:29,409 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:07:21,735 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕 너는 지금 무슨 모드야...
+2025-05-21 20:07:21,735 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕 너는 지금 무슨 모드야...'
+2025-05-21 20:07:21,788 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=df66810c-0431-4a4d-a121-8f058b4fd025, 모드=general
+2025-05-21 20:07:24,973 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:07:24,974 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:07:24,974 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:08:31,977 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 가능한 모드 알려줘...
+2025-05-21 20:08:31,978 - page_list.chatbot_page - INFO - 사용자 입력 처리: '가능한 모드 알려줘...'
+2025-05-21 20:08:32,035 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=df66810c-0431-4a4d-a121-8f058b4fd025, 모드=general
+2025-05-21 20:08:35,694 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:08:35,695 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:08:35,695 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:08:55,138 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research모드로 변경해줘...
+2025-05-21 20:08:55,139 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research모드로 변경해줘...'
+2025-05-21 20:08:55,191 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=df66810c-0431-4a4d-a121-8f058b4fd025, 모드=general
+2025-05-21 20:08:56,829 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:08:56,829 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:08:56,829 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:11:20,541 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕? 너는 무슨 모드야 지금 ? 그리고 무슨 모드들 가능해...
+2025-05-21 20:11:20,542 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕? 너는 무슨 모드야 지금 ? 그리고 무슨 모드들 가능해...'
+2025-05-21 20:11:20,598 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=b3ee9c42-36b3-48cf-bf67-f79d5a198e91, 모드=general
+2025-05-21 20:11:23,512 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:11:23,512 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:11:23,513 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:11:35,653 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research 모드로 바꿔줘...
+2025-05-21 20:11:35,654 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research 모드로 바꿔줘...'
+2025-05-21 20:11:35,712 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=b3ee9c42-36b3-48cf-bf67-f79d5a198e91, 모드=general
+2025-05-21 20:11:37,452 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:11:37,453 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:11:37,453 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:14:46,645 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕 너는 지금 무슨모드고, 어떤 모드들 변경가능해...
+2025-05-21 20:14:46,646 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕 너는 지금 무슨모드고, 어떤 모드들 변경가능해...'
+2025-05-21 20:14:46,703 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=fc48b518-34ec-4c98-8250-ec078fb8742e, 모드=general
+2025-05-21 20:14:49,863 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:14:49,864 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:14:49,864 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:14:56,448 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: research모드로 변경해줄래?...
+2025-05-21 20:14:56,448 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'research모드로 변경해줄래?...'
+2025-05-21 20:14:56,501 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=fc48b518-34ec-4c98-8250-ec078fb8742e, 모드=general
+2025-05-21 20:14:58,044 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:14:58,045 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:14:58,045 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: general (현재 UI 모드: general)
+2025-05-21 20:16:16,202 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:16:21,655 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:16:26,738 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:16:30,805 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:16:33,830 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:16:38,953 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:16:41,096 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:16:42,163 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:16:43,469 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:16:45,742 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:19:54,777 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:19:55,578 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:19:56,450 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:19:57,210 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:19:57,857 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:19:58,391 - page_list.chatbot_page - INFO - 모드 변경: research -> general (사용자 요청: True)
+2025-05-21 20:20:01,516 - page_list.chatbot_page - INFO - 모드 변경: general -> research (사용자 요청: True)
+2025-05-21 20:20:08,324 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 지금 무슨 모드야...
+2025-05-21 20:20:08,324 - page_list.chatbot_page - INFO - 사용자 입력 처리: '지금 무슨 모드야...'
+2025-05-21 20:20:08,381 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=7df11862-a7e5-43f5-bc1d-90249fbc485f, 모드=research
+2025-05-21 20:20:11,094 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:20:11,096 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:20:11,096 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: research (현재 UI 모드: research)
+2025-05-21 20:20:20,477 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 일반으로 변경해...
+2025-05-21 20:20:20,477 - page_list.chatbot_page - INFO - 사용자 입력 처리: '일반으로 변경해...'
+2025-05-21 20:20:20,534 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=7df11862-a7e5-43f5-bc1d-90249fbc485f, 모드=research
+2025-05-21 20:20:23,169 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:20:23,170 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:20:23,170 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: research (현재 UI 모드: research)
+2025-05-21 20:22:36,503 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 지금 너는 무슨 모드야...
+2025-05-21 20:22:36,504 - page_list.chatbot_page - INFO - 사용자 입력 처리: '지금 너는 무슨 모드야...'
+2025-05-21 20:22:36,558 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=7df11862-a7e5-43f5-bc1d-90249fbc485f, 모드=research
+2025-05-21 20:22:39,669 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:22:39,669 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:22:39,669 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: research (현재 UI 모드: research)
+2025-05-21 20:34:54,716 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 지금 모드 뭐냐...
+2025-05-21 20:34:54,717 - page_list.chatbot_page - INFO - 사용자 입력 처리: '지금 모드 뭐냐...'
+2025-05-21 20:34:54,773 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=7df11862-a7e5-43f5-bc1d-90249fbc485f, 모드=research
+2025-05-21 20:34:58,004 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:34:58,006 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:34:58,006 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: research (현재 UI 모드: research)
+2025-05-21 20:35:04,717 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: general모드로 변경해봐...
+2025-05-21 20:35:04,717 - page_list.chatbot_page - INFO - 사용자 입력 처리: 'general모드로 변경해봐...'
+2025-05-21 20:35:04,774 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=7df11862-a7e5-43f5-bc1d-90249fbc485f, 모드=research
+2025-05-21 20:35:06,453 - page_list.chatbot_page - INFO - 서버 응답 수신: 상태코드=200
+2025-05-21 20:35:06,455 - page_list.chatbot_page - INFO - 서버 응답 분석 시작
+2025-05-21 20:35:06,455 - page_list.chatbot_page - INFO - 서버에서 반환된 모드: research (현재 UI 모드: research)
+2025-05-21 20:55:20,577 - page_list.chatbot_page - INFO - 새 사용자 입력 수신: 안녕...
+2025-05-21 20:55:20,578 - page_list.chatbot_page - INFO - 사용자 입력 처리: '안녕...'
+2025-05-21 20:55:20,634 - page_list.chatbot_page - INFO - 서버 요청: URL=http://localhost:8800/ask, 세션ID=216a332b-6083-4c64-95e6-a76fc03225df, 모드=general
+2025-05-21 20:55:20,641 - page_list.chatbot_page - ERROR - 서버 연결 오류: 500 Server Error: Internal Server Error for url: http://localhost:8800/ask
+2025-05-21 20:55:20,642 - page_list.chatbot_page - ERROR - 서버에서 유효한 응답을 받지 못함

@@ -1,0 +1,304 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+
+.voice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.circle-container {
+    width: 200px;  /* 원 크기 축소 (300px -> 200px) */
+    height: 200px; /* 원 크기 축소 (300px -> 200px) */
+    position: relative;
+    margin-bottom: 60px; /* 마이크 버튼과의 간격 증가 (60px -> 120px) */
+    margin-top: 220px; /* 원을 아래로 이동 */
+    filter: drop-shadow(0 0 15px rgba(32, 156, 238, 0.3));
+    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* 부드러운 전환 효과 */
+}
+
+/* 말할 때 원이 부드럽게 커지는 애니메이션 */
+.circle-container.active {
+    transform: scale(1.55); /* 더 크게 커지도록 1.25로 증가 */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 더 부드러운 전환 */
+}
+
+/* 호흡 애니메이션 (살짝 크기가 변하는 효과) */
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); /* 호흡 효과도 약간 증가 */ }
+}
+
+.circle-container.idle {
+    animation: breathe 3s ease-in-out infinite; /* 호흡 주기를 3초로 단축 */
+}
+
+.voice-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #2979c2 0%, #1a5c99 40%, #0d4075 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(109, 193, 255, 0.4);
+}
+
+.voice-visualizer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.voice-indicator {
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    text-align: center;
+    color: #1a5c99;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #1a5c99;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.controls {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px; /* 마이크 버튼을 더 아래로 이동 (40px -> 80px) */
+    gap: 30px;
+}
+
+.mic-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f0f8ff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(32, 156, 238, 0.2);
+}
+
+.mic-button:hover {
+    background-color: #e1f5fe;
+    transform: scale(1.05);
+}
+
+.mic-button.muted {
+    background-color: #fddede;
+}
+
+.mic-button svg {
+    width: 24px;
+    height: 24px;
+    color: #1a5c99;
+}
+
+/* 마이크 버튼 활성화 시 빛나는 효과 */
+.mic-button.active {
+    box-shadow: 0 0 0 4px rgba(32, 156, 238, 0.2), 0 2px 20px rgba(32, 156, 238, 0.4);
+}
+
+.cancel-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f0f8ff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(32, 156, 238, 0.2);
+}
+
+.cancel-button:hover {
+    background-color: #e1f5fe;
+}
+
+.audio-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* 오디오 시각화를 위한 스타일 */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+.audio-pulse {
+    position: absolute;
+    background: rgba(109, 193, 255, 0.25);
+    border-radius: 50%;
+    width: 70%;
+    height: 70%;
+    animation: pulse 2s infinite;
+}
+
+/* 여러 겹의 펄스 애니메이션 */
+.audio-pulse-1 {
+    animation-delay: 0s;
+    background: radial-gradient(circle, rgba(144, 202, 249, 0.3) 0%, rgba(109, 193, 255, 0.15) 70%);
+}
+
+.audio-pulse-2 {
+    animation-delay: 0.5s;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(144, 202, 249, 0.25) 0%, rgba(109, 193, 255, 0.1) 70%);
+}
+
+.audio-pulse-3 {
+    animation-delay: 1s;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(144, 202, 249, 0.2) 0%, rgba(109, 193, 255, 0.05) 70%);
+}
+
+/* OpenAI 스타일 파도 애니메이션 */
+.wave-container {
+    position: absolute;
+    top: 50%; /* voice-container의 중앙 기준 */
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-200px); /* 기둥을 더 위쪽으로 이동 (-140px -> -200px) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px; /* 간격을 줄여서 더 조밀하게 */
+    width: 160px; /* 원(200px)보다 살짝 작게 설정 */
+    opacity: 1; /* 항상 보이도록 변경 */
+    transition: opacity 0.3s ease;
+    z-index: 10; /* 원 위에 표시되도록 z-index 추가 */
+    pointer-events: none; /* 클릭 이벤트 방지 */
+}
+
+.wave-container.active {
+    opacity: 1;
+}
+
+.wave-bar {
+    width: 25px; /* 기둥 너비 고정 */
+    height: 50px; /* 기본 높이를 50px로 변경 */
+    background: linear-gradient(180deg, #90c1ec 0%, #99ade6 100%);
+    border-radius: 12px; /* 25px 너비에 맞춰 둥근 모서리 조정 */
+    transform: scaleY(1); /* 기본 상태에서는 고정 크기 */
+    transition: transform 0.1s ease; /* 부드러운 전환 */
+}
+
+/* 평소 상태 - 애니메이션 없음 */
+.wave-bar.idle {
+    animation: none;
+    transform: scaleY(1);
+    height: 50px; /* idle 상태에서 50px 유지 */
+}
+
+/* 음성 감지 시 애니메이션 */
+.wave-bar.active {
+    animation: wave-animation 1.8s ease-in-out infinite;
+    height: 50px; /* active 상태에서도 기본 높이 50px 유지 */
+}
+
+.wave-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.wave-bar:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.wave-bar:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.wave-bar:nth-child(4) {
+    animation-delay: 0.45s;
+}
+
+.wave-bar:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.wave-bar:nth-child(6) {
+    animation-delay: 0.75s;
+}
+
+.wave-bar:nth-child(7) {
+    animation-delay: 0.9s;
+}
+
+.wave-bar:nth-child(8) {
+    animation-delay: 1.05s;
+}
+
+@keyframes wave-animation {
+    0%, 100% {
+        transform: scaleY(1); /* 기본 크기 (50px) */
+    }
+    50% {
+        transform: scaleY(1.3); /* 최대 30% 증가 (50px * 1.3 = 65px) */
+    }
+}
+
+/* 별 효과 */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle-star 3s ease infinite;
+}
+
+@keyframes twinkle-star {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.8; }
+}

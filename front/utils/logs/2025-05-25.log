@@ -1,0 +1,59 @@
+2025-05-25 22:36:28,456 - page_list.rag_page - INFO - RAG 저장소 디렉토리 생성: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store
+2025-05-25 22:36:28,457 - page_list.rag_page - INFO - 메타데이터 파일 생성: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/metadata.json
+2025-05-25 22:39:49,932 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 22:45:46,051 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/my_collection_20250525_223949.txt
+2025-05-25 22:45:46,052 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 22:56:29,049 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:03:24,029 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:03:31,884 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/dev_tool_20250525_230324.txt
+2025-05-25 23:03:31,885 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:03:37,562 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/dev_tool_20250525_225629.md
+2025-05-25 23:03:37,562 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:04:32,758 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:09:37,655 - page_list.rag_page - INFO - 문서 삭제 완료: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/dev_tool_20250525_230432.md
+2025-05-25 23:09:37,656 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:09:53,204 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:09:54,960 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-25 23:09:55,003 - page_list.rag_page - INFO - 컬렉션 확인 결과: 
+2025-05-25 23:09:55,003 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-25 23:09:55,025 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 20
+2025-05-25 23:09:55,025 - page_list.rag_page - ERROR - 임베딩 오류: "MD_COLLECTION"  = ""MD_COLLECTION""
+2025-05-25 23:09:55,025 - page_list.rag_page - ERROR - 임베딩 오류: ^^^^^^^^^^^^^^^
+2025-05-25 23:09:55,025 - page_list.rag_page - ERROR - 임베딩 오류: SyntaxError: cannot assign to literal here. Maybe you meant '==' instead of '='?
+2025-05-25 23:09:55,025 - page_list.rag_page - ERROR - 마크다운 임베딩 실패. 반환 코드: 1
+2025-05-25 23:09:55,025 - page_list.rag_page - ERROR - 오류 메시지:   File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 20
+    "MD_COLLECTION"  = ""MD_COLLECTION""
+    ^^^^^^^^^^^^^^^
+SyntaxError: cannot assign to literal here. Maybe you meant '==' instead of '='?
+
+2025-05-25 23:12:51,059 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-25 23:12:51,101 - page_list.rag_page - INFO - 컬렉션 확인 결과: 
+2025-05-25 23:12:51,102 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-25 23:12:53,009 - page_list.rag_page - ERROR - 임베딩 오류: Traceback (most recent call last):
+2025-05-25 23:12:53,009 - page_list.rag_page - ERROR - 임베딩 오류: File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 6, in <module>
+2025-05-25 23:12:53,009 - page_list.rag_page - ERROR - 임베딩 오류: from scipy.sparse import csr_matrix
+2025-05-25 23:12:53,010 - page_list.rag_page - ERROR - 임베딩 오류: ModuleNotFoundError: No module named 'scipy'
+2025-05-25 23:12:53,010 - page_list.rag_page - ERROR - 마크다운 임베딩 실패. 반환 코드: 1
+2025-05-25 23:12:53,010 - page_list.rag_page - ERROR - 오류 메시지: Traceback (most recent call last):
+  File "/Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py", line 6, in <module>
+    from scipy.sparse import csr_matrix
+ModuleNotFoundError: No module named 'scipy'
+
+2025-05-25 23:13:24,178 - page_list.rag_page - INFO - 컬렉션 확인 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/list_collections.py
+2025-05-25 23:13:37,197 - page_list.rag_page - INFO - 컬렉션 확인 결과: 컬렉션 목록: []
+
+2025-05-25 23:13:37,198 - page_list.rag_page - INFO - 마크다운 임베딩 명령 실행: python /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_utils/temp_push_md.py
+2025-05-25 23:14:09,800 - page_list.rag_page - INFO - 임베딩 출력: [VertexAI] 모델 로드 완료: text-multilingual-embedding-002
+2025-05-25 23:14:09,801 - page_list.rag_page - INFO - 임베딩 출력: setup_milvus_collection
+2025-05-25 23:14:09,801 - page_list.rag_page - INFO - 임베딩 출력: 컬렉션 생성 : MD_COLLECTION
+2025-05-25 23:14:09,801 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 컬렉션 생성: MD_COLLECTION
+2025-05-25 23:14:09,801 - page_list.rag_page - INFO - 임베딩 출력: dense_vector 인덱스 생성
+2025-05-25 23:14:09,802 - page_list.rag_page - INFO - 임베딩 출력: sparse_vector 인덱스 생성
+2025-05-25 23:14:09,802 - page_list.rag_page - INFO - 임베딩 출력: [Milvus] 인덱스 생성 및 로드 완료
+2025-05-25 23:14:09,802 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/en 가 없습니다.
+2025-05-25 23:14:09,802 - page_list.rag_page - INFO - 임베딩 출력: [Warning] /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/ko 가 없습니다.
+2025-05-25 23:14:09,802 - page_list.rag_page - INFO - 임베딩 출력: [Info] 총 0개의 MD파일 발견
+2025-05-25 23:14:09,802 - page_list.rag_page - INFO - 임베딩 출력: [Info] 삽입할 파일이 없습니다.
+2025-05-25 23:14:10,136 - page_list.rag_page - INFO - 마크다운 임베딩 성공: /Users/idongju/dev/dev-tool-with-llm/chatbot/dj/front/rag_store/dev_tool_20250525_230953.md
+2025-05-25 23:14:10,137 - page_list.rag_page - INFO - 메타데이터 저장 완료
+2025-05-25 23:14:10,137 - page_list.rag_page - INFO - 메타데이터 업데이트 완료: RAG 생성 정보 추가
